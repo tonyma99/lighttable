@@ -1,4 +1,5 @@
-<div class="card">
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+<div class="card" on:click>
     <slot></slot>
 </div>
 

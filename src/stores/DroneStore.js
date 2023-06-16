@@ -5,37 +5,37 @@ export const DroneStore = writable([
         id: 150,
         health: 100,
         img: "/drone.png",
-        status: "Online"
+        status: "ONLINE"
     },
     {
         id: 172,
         health: 90,
         img: "/drone.png",
-        status: "Online"
+        status: "ONLINE"
     },
     {
         id: 151,
         health: 80,
         img: "/drone.png",
-        status: "Online"
+        status: "ONLINE"
     },
     {
         id: 176,
         health: 70,
         img: "/drone.png",
-        status: "Online"
+        status: "REPAIR"
     },
     {
         id: 163,
         health: 70,
         img: "/drone.png",
-        status: "Repair"
+        status: "ONLINE"
     },
     {
         id: 177,
         health: 70,
         img: "/drone.png",
-        status: "Offline"
+        status: "OFFLINE"
     },
     {
         id: 166,
@@ -47,6 +47,6 @@ export const DroneStore = writable([
         id: 180,
         health: 70,
         img: "/drone.png",
-        status: "Online"
+        status: "ONLINE"
     }
 ]);

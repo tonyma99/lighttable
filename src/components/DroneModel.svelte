@@ -16,7 +16,7 @@
 	}
 	let drone = {
 		position: {x: 0, y: 0, z: 0},
-		scale: 300
+		scale: 250
 	}
 
 </script>
@@ -42,7 +42,7 @@
 	  max-width: 100%;
 	  height: 75%;
 	  
-	  border: 1px solid white;
+	  /* border: 1px solid white;  */
 	}
   </style>
   

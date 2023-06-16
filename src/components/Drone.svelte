@@ -1,70 +1,88 @@
 <script>
+    import { createEventDispatcher } from "svelte";
     import { DroneStore } from "../stores/DroneStore";
     import Card from "./card.svelte";
 
+    let dispatch = createEventDispatcher();
+
+    const handleDroneClick = (id, status) => {
+        let data = {
+            id,
+            status
+        };
+        dispatch("currentDrone", data);
+    };
 </script>
 
 <div class="drone-list">
     {#each $DroneStore as Drone (Drone.id)}
-        <Card>
+        <Card on:click={() => handleDroneClick(Drone.id, Drone.status)}>
             <div class="drone">
                 <div class="drone-id">
-                    <h1>
-                        {Drone.id}
-                    </h1>
+                    <h1>{Drone.id}</h1>
                 </div>
-                <div class="drone-img">
-                    <img src={Drone.img} alt="Drone">
+                <div class:status={Drone.status === "OFFLINE"} class="drone-img">
+                    {#if Drone.status === "OFFLINE"}
+                        <img src={Drone.img} alt="Drone" style="opacity: 0.2;">
+                        <div class="status-text">OFFLINE</div>
+                    {:else}
+                        <img src={Drone.img} alt="Drone">
+                    {/if}
                 </div>
             </div>
-        </Card> 
+        </Card>
     {/each}
 </div>
 
 <style>
-    .drone{
-        /* padding-top: 10px; */
+    .drone {
         padding: 20px;
-        display:grid; 
+        display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 20px
+        gap: 20px;
     }
-    .drone-id{
-        margin-top: 30%;
-        margin-left: 10%;
+
+    .drone-id {
         border: 1px solid white;
-        /* width: fit-content; */
-        padding-left: 10px;
-        padding-right: 10px;
     }
-    h1{
+
+    h1 {
         text-align: center;
         font-size: 40px;
         color: #00FFFF;
-        /* margin: 50% 0 0 40%; */
         font-family: sans-serif;
-        text-shadow:
-        0 0 3px #fff,
-        /* 0 0 10px #fff, */
-        /* 0 0 21px #fff, */
-        /* 0 0 42px #0fa, */
-        /* 0 0 82px #0fa, */
-        /* 0 0 92px #0fa, */
-        /* 0 0 102px #0fa, */
-        0 0 151px #0fa;
+        text-shadow: 0 0 3px #fff, 0 0 151px #0fa;
     }
-    .drone-list{
+
+    .drone-list {
         width: 50vw;
-        display:grid;
+        display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 10px;
     }
-    img{
-        margin-top: 20px;
+
+    img {
         max-width: 100%;
         height: auto;
     }
-    .drone-img{
+
+    .drone-img {
         border: 1px solid white;
+        position: relative;
+    }
+
+    .status {
+        border-color: red;
+    }
+
+    .status-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(255, 0, 0, 0.7);
+        color: white;
+        font-size: 20px;
+        padding: 10px;
     }
 </style>
