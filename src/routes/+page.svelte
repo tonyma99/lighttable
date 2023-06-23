@@ -1,2 +1,11 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<h1>Welcome to Light Table</h1>
+
+<ul>
+	<li>
+		<a href="/drone"> Drone Administration Panel</a>
+	</li>
+
+	<li><a href="/map">Real-time Sattelite Map</a></li>
+
+	<li><a href="/video ">Connect with the Tet</a></li>
+</ul>
