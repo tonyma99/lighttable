@@ -31,16 +31,22 @@
 <style>
   body{
     background: black;
-    background-image: radial-gradient(rgba(255,255,255,0.3) 1.25px, transparent 0);
-    background-size: 40px 40px;
-    background-position: -20px -20px;
+    margin: 0;
   }
   .main{
+    background-image: radial-gradient(rgba(255,255,255,0.3) 1.25px, transparent 0);
+    background-size: 40px 40px;
+    background-position: 0px 0px;
     color: white;
     display:grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
+    padding: 16px;
   }  
 
-
+  .model{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 </style>

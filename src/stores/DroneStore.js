@@ -48,5 +48,29 @@ export const DroneStore = writable([
         health: 70,
         img: "/drone.png",
         status: "ONLINE"
+    },
+    {
+        id: 181,
+        health: 70,
+        img: "/drone.png",
+        status: "ONLINE"
+    },
+    {
+        id: 182,
+        health: 70,
+        img: "/drone.png",
+        status: "OFFLINE"
+    },
+    {
+        id: 183,
+        health: 70,
+        img: "/drone.png",
+        status: "MIA"
+    },
+    {
+        id: 184,
+        health: 70,
+        img: "/drone.png",
+        status: "ONLINE"
     }
 ]);

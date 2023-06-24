@@ -19,7 +19,13 @@
         <Card on:click={() => handleDroneClick(Drone.id, Drone.status)}>
             <div class="drone">
                 <div class="drone-id">
-                    <h1>{Drone.id}</h1>
+                    <div>
+                        <span>◆ &nbsp;DRN</span>
+                        <span>449 2048&nbsp; ◆</span>
+                    </div>
+                    <div>
+                        <h1>{Drone.id}</h1>
+                    </div>
                 </div>
                 <div class:status={Drone.status === "OFFLINE"} class="drone-img">
                     {#if Drone.status === "OFFLINE"}
@@ -43,13 +49,36 @@
     }
 
     .drone-id {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+    }
+
+    .drone-id div:nth-child(1) {
+        padding: 0 8px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .drone-id span {
+        color: rgb(160,216,220);
+    }
+
+    .drone-id div {
+        text-align: center;
         border: 2px solid rgb(35,42,46);
+    }
+
+    .drone-id div * {
+        margin-top: 8px;
+        margin-bottom: 8px;
     }
 
     h1 {
         text-align: center;
-        font-size: 40px;
+        font-size: 3rem;
         color: rgb(160,216,220);
+        margin: 0;
         /* text-shadow: 0 0 3px #fff, 0 0 151px #0fa; */
     }
 

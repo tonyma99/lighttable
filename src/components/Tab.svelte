@@ -30,14 +30,12 @@
 </div>
 
 <style>
-    .tabs{
-        margin-bottom: 40px;;
-    }
     ul{
         display: flex;
         justify-content: center;
         padding: 0;
         list-style-type: none;
+        margin: 0;
     }
     li{
         margin: 0 10px;
