@@ -20,7 +20,8 @@
             <div class="drone">
                 <div class="drone-id">
                     <div>
-                        <p>DRN 449 2048</p>
+                        <span>◆ &nbsp;DRN</span>
+                        <span>449 2048&nbsp; ◆</span>
                     </div>
                     <div>
                         <h1>{Drone.id}</h1>
@@ -51,6 +52,16 @@
         display: flex;
         flex-direction: column;
         gap: 0.5em;
+    }
+
+    .drone-id div:nth-child(1) {
+        padding: 0 8px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .drone-id span {
+        color: rgb(160,216,220);
     }
 
     .drone-id div {
