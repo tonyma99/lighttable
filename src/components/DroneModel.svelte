@@ -39,7 +39,7 @@
   
   <style>
 	.scene {
-	  max-width: 100%;
+	  max-width: 98%;
 	  height: 75%;
 	  
 	  /* border: 1px solid white;  */
