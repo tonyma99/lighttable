@@ -41,15 +41,16 @@
     }
     li{
         margin: 0 10px;
-        border: 1px solid;
+        border: 2px solid rgb(57,72,77);
         padding: 10px 50px;
         border-radius: 8px;
         font-size: 18px;
         cursor: pointer;
+        color: rgb(57,72,77);
     }
     .active{
-        color: white;
-        padding-bottom: 8px;
-        background: #3A86B7;
+        color: rgb(117,134,135);
+        border-color: rgb(117,134,135);
+        background: rgb(51,62,69);
     }
 </style>
