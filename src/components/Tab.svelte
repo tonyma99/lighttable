@@ -47,6 +47,8 @@
         font-size: 18px;
         cursor: pointer;
         color: rgb(57,72,77);
+        width: 70px;
+        text-align: center;
     }
     .active{
         color: rgb(117,134,135);
