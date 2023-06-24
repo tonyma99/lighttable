@@ -6,8 +6,10 @@
 <style>
     .card{
         border: 2px solid;
-        border-color: blue;
+        border-color: rgb(63,99,107);
         border-radius: 5px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
         border-bottom-style: none;
     }
 </style>

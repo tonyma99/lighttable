@@ -1,7 +1,7 @@
 <script>
     import { createEventDispatcher } from "svelte";
     import { DroneStore } from "../stores/DroneStore";
-    import Card from "./card.svelte";
+    import Card from "./Card.svelte";
 
     let dispatch = createEventDispatcher();
 
@@ -43,15 +43,14 @@
     }
 
     .drone-id {
-        border: 1px solid white;
+        border: 2px solid rgb(35,42,46);
     }
 
     h1 {
         text-align: center;
         font-size: 40px;
-        color: #00FFFF;
-        font-family: sans-serif;
-        text-shadow: 0 0 3px #fff, 0 0 151px #0fa;
+        color: rgb(160,216,220);
+        /* text-shadow: 0 0 3px #fff, 0 0 151px #0fa; */
     }
 
     .drone-list {
@@ -67,12 +66,12 @@
     }
 
     .drone-img {
-        border: 1px solid white;
+        border: 2px solid rgb(35,42,46);
         position: relative;
     }
 
     .status {
-        border-color: red;
+        border-color: rgb(178,94,65);
     }
 
     .status-text {
@@ -80,7 +79,7 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        background-color: rgba(255, 0, 0, 0.7);
+        background-color: rgb(178,94,65,0.7);
         color: white;
         font-size: 20px;
         padding: 10px;

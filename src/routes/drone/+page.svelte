@@ -31,7 +31,7 @@
 <style>
   body{
     background: black;
-    background-image: radial-gradient(white 1px, transparent 0);
+    background-image: radial-gradient(rgba(255,255,255,0.3) 1.25px, transparent 0);
     background-size: 40px 40px;
     background-position: -20px -20px;
   }
