@@ -2,6 +2,7 @@
 	import * as Threlte from '@threlte/core'
 	import * as Three from 'three'
 	import * as Extra from '@threlte/extras';
+	import { onMount } from 'svelte';
 	
 	const gridHelper = new Three.GridHelper(20, 10);
 	const axesHelper = new Three.AxesHelper(10);
@@ -19,9 +20,13 @@
 		scale: 250
 	}
 
+	let showCanvas = false;
+	onMount(() => showCanvas = true)
 </script>
   
+	
   <div class="scene">
+	{#if showCanvas}
 	<Threlte.Canvas rendererParameters={{ antialias: true }} >
 		<!-- <Threlte.Object3DInstance object={gridHelper} /> -->
 		<!-- <Threlte.Object3DInstance object={axesHelper} /> -->
@@ -35,6 +40,7 @@
 		<Extra.GLTF url="/drone.glb" {...drone}/>
 		
 	</Threlte.Canvas>
+	{/if}
   </div>
   
   <style>
