@@ -1,7 +1,7 @@
 <script>
     import { createEventDispatcher } from "svelte";
     import { DroneStore } from "../stores/DroneStore";
-    import Card from "./card.svelte";
+    import Card from "./Card.svelte";
 
     let dispatch = createEventDispatcher();
 
@@ -50,7 +50,6 @@
         text-align: center;
         font-size: 40px;
         color: #00FFFF;
-        font-family: sans-serif;
         text-shadow: 0 0 3px #fff, 0 0 151px #0fa;
     }
 
