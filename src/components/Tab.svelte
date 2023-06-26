@@ -1,6 +1,8 @@
 <script>
     import { DroneStore } from "../stores/DroneStore";
-
+    import { createEventDispatcher } from "svelte";
+    let dispatch = createEventDispatcher();
+    
     export let currentDrone;
     export let statuses;
     export let currentStatus;
@@ -14,7 +16,7 @@
             selectedDrone.status = status;
             return copiedData;
         });
-        console.log(currentDrone, status);
+        dispatch("currentStatus", currentStatus);
     }
 </script>
 
