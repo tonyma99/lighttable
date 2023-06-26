@@ -4,6 +4,7 @@
 	import * as Extra from '@threlte/extras';
 	import { onMount } from 'svelte';
 	
+	export let damaged;
 	const gridHelper = new Three.GridHelper(20, 10);
 	const axesHelper = new Three.AxesHelper(10);
 
@@ -37,7 +38,11 @@
 		<Threlte.AmbientLight color="white" intensity={0.2}/>
 		<Threlte.PointLight intensity={1.5} {...pointLight}/>
 		
-		<Extra.GLTF url="/drone.glb" {...drone}/>
+		{#if damaged == true}
+			<Extra.GLTF url="/damaged_drone.glb" {...drone}/>
+		{:else}
+			<Extra.GLTF url="/drone.glb" {...drone}/>
+		{/if}
 		
 	</Threlte.Canvas>
 	{/if}

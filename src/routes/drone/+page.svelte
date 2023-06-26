@@ -6,14 +6,33 @@
   let statuses = ["ONLINE", "OFFLINE", "REPAIR", "MIA"];
   let currentStatus = "ONLINE";
   let currentDrone = 150;
+  let damaged = false;
 
   const updateCurrentDrone = (e) => {
     let data = e.detail;
     console.log(data);
     currentDrone = data.id;
     currentStatus = data.status;
+    
+    if(currentStatus == "REPAIR") {
+      damaged = true;
+    }
+    else {
+      damaged = false;
+    }
   }
 
+  const updateDroneCanvas = (e) => {
+    let status = e.detail;
+    console.log(status);
+    if(status == "REPAIR") {
+      damaged = true;
+    }
+    else {
+      damaged = false;
+    }
+  }
+  
 </script>
 
 
@@ -21,8 +40,8 @@
 <div class="main">
   <div class="model">
     <h1>Drone {currentDrone}</h1>
-    <DroneModel/>
-    <Tab {currentDrone} {statuses} {currentStatus}/>
+      <DroneModel {damaged}/>
+    <Tab {currentDrone} {statuses} {currentStatus} on:currentStatus={updateDroneCanvas}/>
   </div>
     <Drone on:currentDrone={updateCurrentDrone}/>
   </div>
