@@ -25,6 +25,7 @@
   const updateDroneCanvas = (e) => {
     let status = e.detail;
     console.log(status);
+    currentStatus = status;
     if(status == "REPAIR") {
       damaged = true;
     }
