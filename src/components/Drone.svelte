@@ -2,7 +2,9 @@
     import { createEventDispatcher } from "svelte";
     import { DroneStore } from "../stores/DroneStore";
     import Card from "./Card.svelte";
+    export let currentDrone;
 
+    let active = true;
     let dispatch = createEventDispatcher();
 
     const handleDroneClick = (id, status) => {
@@ -12,11 +14,35 @@
         };
         dispatch("currentDrone", data);
     };
+
 </script>
 
 <div class="drone-list">
     {#each $DroneStore as Drone (Drone.id)}
-        <Card on:click={() => handleDroneClick(Drone.id, Drone.status)}>
+        {#if Drone.id == currentDrone}
+            <Card {active} on:click={() => handleDroneClick(Drone.id, Drone.status)}>
+                <div class="drone">
+                    <div class="drone-id">
+                        <div>
+                            <span>◆ &nbsp;DRN</span>
+                            <span>449 2048&nbsp; ◆</span>
+                        </div>
+                        <div>
+                            <h1>{Drone.id}</h1>
+                        </div>
+                    </div>
+                    <div class:status={Drone.status === "OFFLINE"} class="drone-img">
+                        {#if Drone.status === "OFFLINE"}
+                            <img src={Drone.img} alt="Drone" style="opacity: 0.2;">
+                            <div class="status-text">OFFLINE</div>
+                        {:else}
+                            <img src={Drone.img} alt="Drone">
+                        {/if}
+                    </div>
+                </div>
+            </Card>
+        {:else}
+            <Card on:click={() => handleDroneClick(Drone.id, Drone.status)}>
             <div class="drone">
                 <div class="drone-id">
                     <div>
@@ -37,6 +63,7 @@
                 </div>
             </div>
         </Card>
+        {/if}
     {/each}
 </div>
 

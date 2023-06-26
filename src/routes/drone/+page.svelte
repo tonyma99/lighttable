@@ -44,7 +44,7 @@
       <DroneModel {damaged}/>
     <Tab {currentDrone} {statuses} {currentStatus} on:currentStatus={updateDroneCanvas}/>
   </div>
-    <Drone on:currentDrone={updateCurrentDrone}/>
+    <Drone {currentDrone} on:currentDrone={updateCurrentDrone}/>
   </div>
 </body>
 
