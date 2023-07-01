@@ -2,15 +2,24 @@
 	import { onMount } from "svelte";
 	import { Map }  from "@onsvisual/svelte-maps";
 	import maplibre from "maplibre-gl";
+	import {Marker} from "maplibre-gl";
+	import { DroneStore } from "../../stores/DroneStore";
 
 	let map;
 	// State
 	let zoom;
 	let center = {};
-
+	
 	onMount(() => {
 		map.addControl(new maplibre.NavigationControl(), 'top-left');
+		for (let i = 0; i < $DroneStore.length; i ++)
+		{
+			new Marker({color: "#FF0000"})
+				.setLngLat($DroneStore[i].location)
+				.addTo(map);
+		}
 	})
+
 </script>
 
 <main>
