@@ -4,6 +4,7 @@
 	import maplibre, { Popup } from "maplibre-gl";
 	import { Marker } from "maplibre-gl";
 	import { DroneStore } from "../stores/DroneStore";
+    import { ClampToEdgeWrapping } from "three";
 	
 	let map;
 	let zoom;
@@ -21,20 +22,28 @@
 
 	onMount(() => {
 		map.addControl(new maplibre.NavigationControl(), 'top-left');
-	  	for (let i = 0; i < $DroneStore.length; i++) {
+	
+		
+		for (let i = 0; i < $DroneStore.length; i++) {
 			if ($DroneStore[i].status === "ONLINE") {
+				let el = document.createElement('div');
+				el.style.backgroundSize = 'contain';
+				el.style.backgroundImage = 'url(/drone.png)';
+				el.style.width = '150px';
+				el.style.height = '80px';
 				const drone = $DroneStore[i];
 				const droneID = drone.id;
+		
 				const popup = new Popup({ offset: 25, closeButton: false }).setText(
 				"Drone " + droneID
 				);
-				new Marker({ color: "#FF0000", draggable: true })
+				new Marker(el, { color: "#FF0000", draggable: true })
 				.setLngLat(drone.location)
 				.setPopup(popup)
 				.addTo(map)
 				.on('dragend', function(e) {
 					let lngLat = e.target.getLngLat();
-					onDragEnd(lngLat, $DroneStore[i].id);
+					onDragEnd(lngLat, droneID);
 				});
 			}
 		}
@@ -54,9 +63,8 @@
   
   <style>
 	main {
-	  width: 100%;
-	  height: 100vh;
-	  position: relative;
+	  	width: 100%;
+	  	height: 100vh;
 	}
   </style>
   
