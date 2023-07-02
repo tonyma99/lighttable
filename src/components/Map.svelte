@@ -1,0 +1,62 @@
+<script>
+	import { onMount } from "svelte";
+	import { Map } from "@onsvisual/svelte-maps";
+	import maplibre, { Popup } from "maplibre-gl";
+	import { Marker } from "maplibre-gl";
+	import { DroneStore } from "../stores/DroneStore";
+	
+	let map;
+	let zoom;
+	let center = {};
+  
+	const onDragEnd = (lngLat, droneID) => {
+		DroneStore.update(currentData => {
+        let copiedData = [...currentData];
+        let selectedDrone = copiedData.find((drone) => drone.id == droneID)
+            
+        selectedDrone.location = [lngLat.lng, lngLat.lat];
+        return copiedData;
+		});
+	}
+
+	onMount(() => {
+		map.addControl(new maplibre.NavigationControl(), 'top-left');
+	  	for (let i = 0; i < $DroneStore.length; i++) {
+			if ($DroneStore[i].status === "ONLINE") {
+				const drone = $DroneStore[i];
+				const droneID = drone.id;
+				const popup = new Popup({ offset: 25, closeButton: false }).setText(
+				"Drone " + droneID
+				);
+				new Marker({ color: "#FF0000", draggable: true })
+				.setLngLat(drone.location)
+				.setPopup(popup)
+				.addTo(map)
+				.on('dragend', function(e) {
+					let lngLat = e.target.getLngLat();
+					onDragEnd(lngLat, $DroneStore[i].id);
+				});
+			}
+		}
+	});
+  </script>
+  
+  <main>
+	<Map
+	  id="map"
+	  style="https://api.maptiler.com/maps/84c10d9b-994e-4d87-9f6e-c3caac31d82d/style.json?key=nAxFE2DP4FE2B9Tycohq"
+	  location={{ lng: -123.14446, lat: 49.24448, zoom: 11.9 }}
+	  bind:map={map}
+	  bind:zoom={zoom}
+	  bind:center={center}
+	/>
+  </main>
+  
+  <style>
+	main {
+	  width: 100%;
+	  height: 100vh;
+	  position: relative;
+	}
+  </style>
+  

@@ -20,7 +20,7 @@ export const DroneStore = writable([
         health: 80,
         img: "/drone.png",
         status: "ONLINE",
-        location: [-123.09, 49.24]
+        location: [-123.038, 49.24]
     },
     {
         id: 176,
