@@ -33,7 +33,7 @@
 				const droneID = drone.id;
 
 				const popup = new Popup({ offset: 30, closeButton: false }).setHTML(`
-					<div style="color: white; padding: 8px;">
+					<div style="color: rgb(160,216,220); padding: 8px;">
 						<h1>Drone ${droneID}</h1>
 						<h3>Some additional information about the drone.</h3>
 					</div>
